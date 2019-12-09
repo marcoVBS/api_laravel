@@ -24,6 +24,12 @@ class CategoryController extends Controller
      */
     public function __construct(Category $category)
     {
+        /**
+         * Protege os recursos do controller contra usuários não tenticados pelo JWT
+         */
+        // $this->middleware('auth:api', ['except' => ['login']]);
+        $this->middleware('auth:api');
+
         $this->category = $category;
     }
 

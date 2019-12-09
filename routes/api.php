@@ -1,4 +1,5 @@
 <?php
+use Illuminate\Support\Facades\Route;
 
 /**
  * Route::get('categories', 'Api\CategoryController@index');
@@ -7,6 +8,7 @@
  * Route::put('categories/{id}', 'Api\CategoryController@update');
  * Route::delete('categories/{id}', 'Api\CategoryController@destroy');
  */
+
 
 /**
  * Chama todos os métodos padrão para categories, como mostrado acima
@@ -31,3 +33,20 @@ Route::apiResource('products', 'Api\ProductController');
     
 //     Route::apiResource('products', 'Api\ProductController');
 // });
+
+/**
+ * Autenticação JWT
+ */
+Route::group([
+
+    'middleware' => 'api',
+    'prefix' => 'auth'
+
+], function ($router) {
+
+    Route::post('login', 'Auth\AuthApiController@login');
+    Route::post('logout', 'Auth\AuthApiController@logout');
+    Route::post('refresh', 'Auth\AuthApiController@refresh');
+    Route::get('me', 'Auth\AuthApiController@me');
+
+});
