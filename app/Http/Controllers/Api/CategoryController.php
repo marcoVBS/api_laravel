@@ -103,4 +103,23 @@ class CategoryController extends Controller
         return response()->json($category, 200);
     }
 
+    /**
+     * Retorna os produtos de uma determinada categoria
+     *
+     * @param $id
+     * @return array
+     */
+    public function products($id)
+    {
+        if(!$category = $this->category->find($id))
+            return response()->json(['error' => 'Not Found'], 404);
+
+        $products = $category->products()->paginate(10);
+
+        return response()->json([
+            'category' => $category,
+            'products' => $products
+        ]);
+    }
+
 }

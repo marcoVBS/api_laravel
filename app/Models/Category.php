@@ -22,4 +22,15 @@ class Category extends Model
         else
             return $this->where('name', 'LIKE', "%{$name}%")->get();
     }
+
+    /**
+     * Retorna os produtos de determinada categoria
+     *
+     * @return array
+     */
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
 }
