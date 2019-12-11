@@ -7,4 +7,8 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-@import 'vue-snotify/styles/material';
+@import '~vue-snotify/styles/material';
+
+// include animation styles vodal
+@import "~vodal/common.css";
+@import "~vodal/rotate.css";

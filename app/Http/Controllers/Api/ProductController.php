@@ -31,7 +31,7 @@ class ProductController extends Controller
          * Protege os recursos do controller contra usuários não tenticados pelo JWT
          */
         // $this->middleware('auth:api', ['except' => ['login']]);
-        $this->middleware('auth:api');
+        // $this->middleware('auth:api');
         
         $this->product = $product;
     }

@@ -8,7 +8,6 @@ import store from './vuex/store'
 
 Vue.use(Snotify)
 
-Vue.component('admin-component', require('./components/admin/AdminComponent').default);
 Vue.component('preloader-component', require('./components/layouts/PreloaderComponent').default);
 
 const app = new Vue({
@@ -16,3 +15,6 @@ const app = new Vue({
     store,
     el: '#app',
 });
+
+store.dispatch('loadCategories')
+store.dispatch('loadProducts')

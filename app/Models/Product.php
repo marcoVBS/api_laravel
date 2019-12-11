@@ -11,7 +11,7 @@ class Product extends Model
     public function getResults($data)
     {
         if (!isset($data['filter']) && !isset($data['name']) && !isset($data['description']))
-            return $this->paginate(10);
+            return $this->orderBy('id', 'DESC')->paginate(10);
 
         return $this->where(function($query) use ($data){
                 if(isset($data['filter'])){
@@ -30,6 +30,7 @@ class Product extends Model
                 }
 
             })
+            ->orderBy('id', 'DESC')
             ->paginate(10);
             
     }

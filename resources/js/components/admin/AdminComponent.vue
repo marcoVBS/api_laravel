@@ -7,6 +7,9 @@
         <li class="nav-item">
             <router-link :to="{name: 'admin.categories'}" class="nav-link">Categorias ({{totalCategories}})</router-link>
         </li>
+        <li class="nav-item">
+            <router-link :to="{name: 'admin.products'}" class="nav-link">Produtos ({{totalProducts}})</router-link>
+        </li>
     </ul>
 
         <div class="container">
@@ -20,6 +23,9 @@ export default {
     computed: {
         totalCategories(){
             return this.$store.state.categories.items.data.length
+        },
+        totalProducts(){
+            return this.$store.state.products.items.data.length
         }
     },
 }

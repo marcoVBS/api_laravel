@@ -17,7 +17,7 @@ export default {
     },
     methods: {
         search(){
-            this.$emit('searchCategory', this.filter)
+            this.$emit('search', this.filter)
         }
     },
 }

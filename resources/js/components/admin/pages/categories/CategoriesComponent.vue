@@ -7,7 +7,7 @@
                 <router-link :to="{name: 'admin.categories.create'}" class="btn btn-success">Cadastrar</router-link>
             </div>
             <div class="col">
-                <search @searchCategory="search" ></search>
+                <search @search="search" ></search>
             </div>
         </div>
 
@@ -16,7 +16,7 @@
                 <tr>
                     <th>ID</th>
                     <th>Nome</th>
-                    <th wid>Ações</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import SearchCategoryComponent from './partials/SearchCategoryComponent'
+import SearchComponent from '../../layouts/SearchComponent'
 
 export default {
     created(){
@@ -86,7 +86,7 @@ export default {
         }
     },
     components: {
-        search: SearchCategoryComponent
+        search: SearchComponent
     }
 }
 </script>
