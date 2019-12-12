@@ -17,4 +17,3 @@ const app = new Vue({
 });
 
 store.dispatch('loadCategories')
-store.dispatch('loadProducts')

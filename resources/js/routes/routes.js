@@ -8,9 +8,25 @@ import AddCategoriyComponent from '../components/admin/pages/categories/AddCateg
 import EditCategoriyComponent from '../components/admin/pages/categories/EditCategoryComponent'
 import ProductsComponent from '../components/admin/pages/products/ProductsComponent'
 
+import SiteComponent from '../components/frontend/SiteComponent'
+import HomeComponent from '../components/frontend/pages/home/HomeComponent'
+import ContactComponent from '../components/frontend/pages/contact/ContactComponent'
+import ProductDetailComponent from '../components/frontend/pages/product/ProductDetailComponent'
+import CartComponent from '../components/frontend/pages/cart/CartComponent'
+
 Vue.use(VueRouter)
 
 const routes = [
+    {
+        path: '/', 
+        component: SiteComponent, 
+        children: [
+            {path: '', component: HomeComponent, name: 'home'},
+            {path: 'contato', component: ContactComponent, name: 'home.contact'},
+            {path: 'produto/:id', component: ProductDetailComponent, name: 'home.product', props: true},
+            {path: 'carrinho', component: CartComponent, name: 'home.cart'}
+        ]
+    },
     {
         path: '/admin', 
         component: AdminComponent,
