@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreUpdateUserFormRequest;
+use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthApiController extends Controller
 {
@@ -15,7 +18,7 @@ class AuthApiController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:api', ['except' => ['login']]);
+        $this->middleware('auth:api', ['except' => ['login', 'register']]);
     }
 
     /**
@@ -79,7 +82,30 @@ class AuthApiController extends Controller
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => Auth::factory()->getTTL() * 60,
-            'user' => $this->me()
+            'user' => auth()->user()
         ]);
     }    
+
+    public function register(StoreUpdateUserFormRequest $request, User $user)
+    {
+        $data = $request->only(['name', 'email', 'password']);
+        $data['password'] = Hash::make($data['password']);
+        
+        $user->create($data);
+
+        return $this->login();
+    }
+
+    public function update(StoreUpdateUserFormRequest $request)
+    {
+        $user = auth()->user();
+
+        $data = $request->all();
+        $data['password'] = Hash::make($data['password']);
+
+        $user->update($data);
+
+        return response()->json(compact('user'));
+    }
+
 }

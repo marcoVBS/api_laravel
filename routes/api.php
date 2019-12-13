@@ -35,4 +35,7 @@ Route::group([
     Route::post('logout', 'Auth\AuthApiController@logout');
     Route::post('refresh', 'Auth\AuthApiController@refresh');
     Route::get('me', 'Auth\AuthApiController@me');
+
+    Route::post('register', 'Auth\AuthApiController@register');
+    Route::put('update', 'Auth\AuthApiController@update');
 });

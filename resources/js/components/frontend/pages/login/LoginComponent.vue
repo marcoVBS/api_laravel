@@ -17,6 +17,7 @@
                                 </div>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-success">Entrar</button>
+                                    <router-link :to="{name: 'home.register'}">Registrar-se?</router-link>
                                 </div>
                             </form>    
                         </div>

@@ -24,7 +24,7 @@ export default {
             return new Promise((resolve, reject) => {
                 axios.post('/api/auth/login', params)
                     .then(response => {
-                        context.commit('AUTH_USER_OK', response.data.user.original)
+                        context.commit('AUTH_USER_OK', response.data.user)
 
                         localStorage.setItem('TOKEN_AUTH', response.data.access_token)
 
@@ -33,7 +33,7 @@ export default {
 
                         resolve()
                     })
-                    .catch(error => reject(error) )
+                    .catch(() => reject() )
                     .finally(() => {
                         context.commit('CHANGE_PRELOADER', false)
                     })

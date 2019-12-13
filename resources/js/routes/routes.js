@@ -15,6 +15,8 @@ import ContactComponent from '../components/frontend/pages/contact/ContactCompon
 import ProductDetailComponent from '../components/frontend/pages/product/ProductDetailComponent'
 import CartComponent from '../components/frontend/pages/cart/CartComponent'
 import LoginComponent from '../components/frontend/pages/login/LoginComponent'
+import RegisterComponent from '../components/frontend/pages/user/RegisterComponent'
+import ProfileComponent from '../components/frontend/pages/user/ProfileComponent'
 
 Vue.use(VueRouter)
 
@@ -28,12 +30,14 @@ const routes = [
             {path: 'produto/:id', component: ProductDetailComponent, name: 'home.product', props: true},
             {path: 'carrinho', component: CartComponent, name: 'home.cart'},
             {path: 'login', component: LoginComponent, name: 'home.login', meta: {auth: false}},
+            {path: 'registro', component: RegisterComponent, name: 'home.register', meta: {auth: false}},
+            {path: 'perfil', component: ProfileComponent, name: 'home.profile', meta: {auth: true}},
         ]
     },
     {
         path: '/admin', 
         component: AdminComponent,
-        meta: { auth: true }, //propriedade para bloquear grupo de rotas
+        meta: { auth: true },
         children: [
             {path: '', component: DashboardComponent, name: 'admin.dashboard'},
             {path: 'categories', component: CategoriesComponent, name: 'admin.categories'},
@@ -41,8 +45,6 @@ const routes = [
             {path: 'categories/:id/edit', component: EditCategoriyComponent, name: 'admin.categories.edit', props: true},
 
             {path: 'products', component: ProductsComponent, name: 'admin.products'},
-            //exemplo bloqueando rota única
-            // {path: 'products', component: ProductsComponent, name: 'admin.products', meta: {auth: true}},
         ],
     },
 ]
