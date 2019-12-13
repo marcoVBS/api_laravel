@@ -11,3 +11,8 @@ try {
 window.axios = require('axios');
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
+//envia o token de autenticação no cabeçalho axios
+let token = localStorage.getItem('TOKEN_AUTH')
+if(token)
+    window.axios.defaults.headers.common = {Authorization : `Bearer ${token}`}
