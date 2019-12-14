@@ -7,6 +7,7 @@ import products from './modules/products/products'
 import cart from './modules/cart/cart'
 import login from './modules/login/login'
 import profile from './modules/users/profile'
+import charts from './modules/charts/charts'
 
 Vue.use(Vuex)
 
@@ -17,7 +18,8 @@ const store = new Vuex.Store({
         products,
         cart,
         login,
-        profile
+        profile,
+        charts
     }
 })
 

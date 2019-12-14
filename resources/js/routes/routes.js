@@ -8,6 +8,7 @@ import CategoriesComponent from '../components/admin/pages/categories/Categories
 import AddCategoriyComponent from '../components/admin/pages/categories/AddCategoryComponent'
 import EditCategoriyComponent from '../components/admin/pages/categories/EditCategoryComponent'
 import ProductsComponent from '../components/admin/pages/products/ProductsComponent'
+import ProductReportComponent from '../components/admin/pages/reports/ProductReportComponent'
 
 import SiteComponent from '../components/frontend/SiteComponent'
 import HomeComponent from '../components/frontend/pages/home/HomeComponent'
@@ -45,6 +46,7 @@ const routes = [
             {path: 'categories/:id/edit', component: EditCategoriyComponent, name: 'admin.categories.edit', props: true},
 
             {path: 'products', component: ProductsComponent, name: 'admin.products'},
+            {path: 'products-reports', component: ProductReportComponent, name: 'admin.products.report'},
         ],
     },
 ]

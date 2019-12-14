@@ -13,6 +13,9 @@
         <li class="nav-item">
             <router-link :to="{name: 'admin.products'}" class="nav-link">Produtos ({{totalProducts}})</router-link>
         </li>
+        <li class="nav-item">
+            <router-link :to="{name: 'admin.products.report'}" class="nav-link">Relatórios</router-link>
+        </li>
     </ul>
 
         <div class="container">

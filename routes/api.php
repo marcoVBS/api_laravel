@@ -12,6 +12,8 @@ Route::get('categories/{id}/products', 'Api\CategoryController@products');
  */
 Route::apiResource('products', 'Api\ProductController');
 
+Route::get('reports-products', 'Api\ReportController@products');
+
 /**
  * Exemplo: Versionamento de rotas de API
  * Interessante mover os controllers para uma pasta v1 dentro da pasta Api
