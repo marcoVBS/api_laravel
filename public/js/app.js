@@ -78381,14 +78381,15 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     checkLogin: function checkLogin(context) {
-      context.commit('CHANGE_PRELOADER', true);
       return new Promise(function (resolve, reject) {
         var token = localStorage.getItem('TOKEN_AUTH');
         if (!token) return reject();
+        context.commit('CHANGE_PRELOADER', true);
         axios.get('/api/auth/me').then(function (response) {
           context.commit('AUTH_USER_OK', response.data);
           resolve();
         })["catch"](function (error) {
+          localStorage.removeItem('TOKEN_AUTH');
           reject(error);
         })["finally"](function () {
           context.commit('CHANGE_PRELOADER', false);
@@ -78396,11 +78397,13 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     logout: function logout(context) {
+      var _this = this;
+
       axios.post('/api/auth/logout').then(function () {
         context.commit('AUTH_USER_LOGOUT');
         localStorage.removeItem('TOKEN_AUTH');
       })["catch"](function (error) {
-        console.log(error);
+        _this.$snotify.error('Falha ao realizar logout', 'Erro');
       });
     }
   }
@@ -78449,13 +78452,15 @@ var CONFIGS = {
 };
 /* harmony default export */ __webpack_exports__["default"] = ({
   loadProducts: function loadProducts(context, params) {
+    var _this = this;
+
     context.commit('CHANGE_PRELOADER', true);
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.get('/api/products', {
       params: params
     }).then(function (response) {
       context.commit('LOAD_PRODUCTS', response.data);
     })["catch"](function (error) {
-      console.log(error);
+      _this.$snotify.error('Falha ao carregar produtos.', 'Erro');
     })["finally"](function () {
       context.commit('CHANGE_PRELOADER', false);
     });

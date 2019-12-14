@@ -41,12 +41,12 @@ export default {
         },
 
         checkLogin(context){
-            context.commit('CHANGE_PRELOADER', true)
-
-            return new Promise((resolve, reject) => {
+                        return new Promise((resolve, reject) => {
                 const token = localStorage.getItem('TOKEN_AUTH')
                 if(!token)
                     return reject()
+
+                context.commit('CHANGE_PRELOADER', true)
                 
                 axios.get('/api/auth/me')
                     .then(response => {
@@ -55,6 +55,9 @@ export default {
                         resolve()
                     })
                     .catch(error => {
+
+                        localStorage.removeItem('TOKEN_AUTH')
+                        
                         reject(error)
                     })
                     .finally(() => {
@@ -71,7 +74,7 @@ export default {
                     localStorage.removeItem('TOKEN_AUTH')
                 })
                 .catch(error => {
-                    console.log(error)
+                    this.$snotify.error('Falha ao realizar logout', 'Erro')
                 })
             
         }

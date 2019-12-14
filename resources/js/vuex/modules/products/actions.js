@@ -16,7 +16,7 @@ export default {
                 context.commit('LOAD_PRODUCTS', response.data)
             })
             .catch(error => {
-                console.log(error)
+                this.$snotify.error('Falha ao carregar produtos.', 'Erro')
             })
             .finally(() => {
                 context.commit('CHANGE_PRELOADER', false)
